@@ -1,0 +1,24 @@
+html 
+    head 
+        title Web2 Lab2
+    body
+        h1 Broken authentication
+        p 
+        | Ovdje je implementirana Loša autentifikacija.
+        | Napad se izvršava tako što se nakon prijave iz URL-a može uzeti SessionId,
+        | koji se i nakon odjave ne izbriše pa se može koristiti za pristup privatnom dijelu aplikacije.
+        | Potrebno je samo ponovno upisati prethodni URL.
+        p 
+        | Sigurost je dodana koristeći kolačić za spremanje SessionId-a, koji je potpisan i uključen je httpOnly.
+        | SessionId ima i rok isteka od dvije minute te se nakon svakog pristupa stranici promijeni.
+        br
+        form(action='/login', method="POST")
+            label(for="username") Username:
+            input(type="text", name="username")
+            br
+            label(for="password") Password: 
+            input(type="password", name="password")
+            br
+            label(for="check") Unsecure version: 
+            input(type="checkbox", name="check", value="false")
+            input(type="submit", value="Login")

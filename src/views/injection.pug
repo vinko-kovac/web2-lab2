@@ -1,0 +1,20 @@
+html 
+    head 
+        title Web2 Lab2
+    body
+        h1 SQL Injection
+        p 
+        | Ovdje je implementiran SQL Injection.
+        | Primjer napada za tautologiju je da se u polje za pretraživanje treba upisati sljedeći niz 
+        | znakova, bez zagrada: (' OR 1=1 --). Mogu se izvesti i drugi napadi kao sa predavanja, ali se
+        | za komentar koristi -- umjesto #.
+        p 
+        | Sigurnost je ugrađena tako što sam koristio ugrađeni način upita koji ima node-postgres, a to je da 
+        | se vrijednosti pošalju u listi pa ih on umeće u upit.
+        br
+        form(action='/search', method="POST")
+            label(for="compname") Enter name:
+            input(type="text", name="compname")
+            label(for="check") Unsecure version: 
+            input(type="checkbox", name="check", value="false")
+            input(type="submit", value="Search")
